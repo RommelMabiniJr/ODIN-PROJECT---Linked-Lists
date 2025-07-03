@@ -1,12 +1,12 @@
 import { Node } from "node.js";
 
 let LinkedList = () => {
-    let head;
+    let headNode;
     
     function append(value) {
-        let temp = head;
+        let temp = headNode;
         if(!temp) {
-            head = new Node(value);s
+            headNode = new Node(value);
             return;
         }
 
@@ -18,13 +18,13 @@ let LinkedList = () => {
     }
     
     function prepend(value) {
-        head = new Node(value, head);
+        headNode = new Node(value, headNode);
     }
 
     function size() {
         let counter = 0;
         while (temp.nextNode) {
-            temp = head.nextNode;
+            temp = headNode.nextNode;
             counter++;
         }
 
@@ -33,17 +33,17 @@ let LinkedList = () => {
 
     function tail() {
         let temp;
-        while (head.nextNode) {
-            temp = head.nextNode;
+        while (headNode.nextNode) {
+            temp = headNode.nextNode;
         }
         return temp;
     }
 
     function at(index) {
-        let temp = head;
+        let temp = headNode;
         for (let i = 0; i < index; i++) {
             if(!temp) return temp;
-            temp = temp.nextNode    
+            temp = temp.nextNode;
         }
 
         return temp;
@@ -51,14 +51,14 @@ let LinkedList = () => {
 
     function pop() {
         let temp;
-        while (head.nextNode) {
-            temp = head.nextNode;
+        while (headNode.nextNode) {
+            temp = headNode.nextNode;
         }
         return temp;
     }
 
     function contains(value) {
-        let temp = head;
+        let temp = headNode;
         for (let i = 0; i < index; i++) {
             if(!temp) return temp;
             temp = temp.nextNode    
@@ -67,4 +67,27 @@ let LinkedList = () => {
         return temp;
     }
     
+    function find(value) {
+        let index = 0;
+        let tempNode = headNode;
+
+        do {
+            if (tempNode.value == value) return index;
+            index++;
+            tempNode = tempNode.nextNode;
+
+        } while (tempNode != null);
+
+        return tempNode;
+    }
+
+    function toString() {
+        let nodeListInString;
+
+        while (NodeList.value != null) {
+            nodeListInString = nodeListInString + `(${NodeList.value}) => `
+        }
+
+        console.log(nodeListInString);
+    }
 }
