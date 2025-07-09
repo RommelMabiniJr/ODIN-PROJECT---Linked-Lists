@@ -1,20 +1,26 @@
-import { Node } from "node.js";
+import { Node } from "./node.js";
 
-let LinkedList = () => {
+export function LinkedList() {
     let headNode;
+
+    function _baseAppendRecursion(value, currentNode) {
+        if(currentNode == null) {
+            return new Node(value)
+        }
+
+        currentNode.nextNode = _baseAppendRecursion(value, currentNode.nextNode)
+        return currentNode;
+    }
     
     function append(value) {
         let temp = headNode;
-        if(!temp) {
+
+        if(temp === undefined) {
             headNode = new Node(value);
             return;
         }
 
-        while (temp.nextNode) {
-            temp = nextNode;
-        }
-
-        temp.nextNode = new Node(value);
+        headNode = _baseAppendRecursion(value, temp)
     }
     
     function prepend(value) {
@@ -22,9 +28,10 @@ let LinkedList = () => {
     }
 
     function size() {
+        let temp = headNode;
         let counter = 0;
-        while (temp.nextNode) {
-            temp = headNode.nextNode;
+        while (temp) {
+            temp = temp.nextNode;
             counter++;
         }
 
@@ -82,12 +89,23 @@ let LinkedList = () => {
     }
 
     function toString() {
-        let nodeListInString;
+        let nodeListInString = "";
+        let tempNode = headNode;
 
-        while (NodeList.value != null) {
-            nodeListInString = nodeListInString + `(${NodeList.value}) => `
+        while (tempNode) {
+            nodeListInString +=  `(${tempNode.value}) => `;
+            tempNode = tempNode.nextNode
         }
-
+        
         console.log(nodeListInString);
+    }
+
+
+    return {
+        append,
+        prepend,
+        size,
+        toString,
+        headNode
     }
 }
