@@ -1,4 +1,4 @@
-import { LinkedList } from "./linkedlist.js";
+import { LinkedList } from "./linkedlist_v2.js";
 const list = new LinkedList();
 
 list.append("dog");
